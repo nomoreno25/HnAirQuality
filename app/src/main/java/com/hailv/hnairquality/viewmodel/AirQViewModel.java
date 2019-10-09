@@ -1,21 +1,25 @@
 package com.hailv.hnairquality.viewmodel;
 
 import android.databinding.BaseObservable;
-import android.databinding.BindingAdapter;
-import android.view.View;
 
 import com.hailv.hnairquality.model.AirQModel;
+
+import java.util.List;
 
 import static java.lang.Integer.parseInt;
 
 public class AirQViewModel extends BaseObservable {
-    AirQModel airQModel;
+    private AirQModel airQModel;
 
     public AirQViewModel(AirQModel airQModel) {
         this.airQModel = airQModel;
     }
 
     public String getAqi(){
+        return airQModel.getAqi();
+    }
+
+    public String getRate(){
         int aqi = parseInt(airQModel.getAqi());
         String xephang = "";
         if (aqi>=0){
@@ -36,13 +40,13 @@ public class AirQViewModel extends BaseObservable {
                 }
             }
         }
-        return "Air Quality Index: " + airQModel.getAqi() + "(" + xephang + ")";
+        return xephang;
     }
 
     public String getCity(){
         return airQModel.getCity();
     }
     public String getTime(){
-        return "Last update: " + airQModel.getTime();
+        return airQModel.getTime();
     }
 }
