@@ -1,52 +1,56 @@
 package com.hailv.hnairquality.viewmodel;
 
-import android.databinding.BaseObservable;
+import android.app.Application;
 
+import com.hailv.hnairquality.Respository;
 import com.hailv.hnairquality.model.AirQModel;
 
 import java.util.List;
 
-import static java.lang.Integer.parseInt;
+import androidx.databinding.ObservableField;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
-public class AirQViewModel extends BaseObservable {
-    private AirQModel airQModel;
+public class AirQViewModel extends AndroidViewModel {
+    final LiveData<AirQModel> airQLiveData;
+    public ObservableField<AirQModel> airQModelObservableField = new ObservableField<>();
 
-    public AirQViewModel(AirQModel airQModel) {
-        this.airQModel = airQModel;
+    public AirQViewModel(Application application) {
+        super(application);
+        airQLiveData = Respository.getInstance().getDataApi();
     }
 
-    public String getAqi(){
-        return airQModel.getAqi();
+    public LiveData<AirQModel> getObservableProject() {
+        return airQLiveData;
     }
 
-    public String getRate(){
-        int aqi = parseInt(airQModel.getAqi());
-        String xephang = "";
-        if (aqi>=0){
-            xephang = "Good";
-            if (aqi>=51){
-                xephang = "Moderate";
-                if (aqi>=101){
-                    xephang = "Unhealthy for sensitive";
-                    if (aqi>=151){
-                        xephang = "Unhealthy";
-                        if (aqi>=201){
-                            xephang = "Very unhealthy";
-                            if (aqi>=301){
-                                xephang = "Hazardous";
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return xephang;
+    public void setAirQViewModel(AirQModel airQModel) {
+        this.airQModelObservableField.set(airQModel);
+        insertDb();
     }
 
-    public String getCity(){
-        return airQModel.getCity();
+    public String nameCity() {
+        return airQModelObservableField.get().getmCity();
     }
-    public String getTime(){
-        return airQModel.getTime();
+
+    public String airIndex() {
+        return airQModelObservableField.get().getmIndex();
     }
+
+    public String classification() {
+        return airQModelObservableField.get().getmClassification();
+    }
+
+    public String dateTime() {
+        return airQModelObservableField.get().getMdateTime();
+    }
+
+    public void insertDb() {
+        Respository.getInstance().insertDatabase(nameCity(), airIndex(), classification(), dateTime());
+    }
+
+    public List<RecyclerViewModel> getArrToLv() {
+        return Respository.getInstance().getArrToLv();
+    }
+
 }

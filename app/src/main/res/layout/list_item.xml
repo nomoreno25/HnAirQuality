@@ -3,43 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data class="ListItemBinding">
-        <import type="android.support.v4.content.ContextCompat"/>
+        <variable
+            name="onClickItem"
+            type="com.hailv.hnairquality.view.callback.OnItemRecyClickCallback" />
         <variable
             name="viewmodel"
-            type="com.hailv.hnairquality.viewmodel.AirQViewModel" />
+            type="com.hailv.hnairquality.viewmodel.RecyclerViewModel" />
     </data>
 
     <LinearLayout
+        android:onClick="@{()->onClickItem.onClickListener(viewmodel)}"
         android:layout_margin="2dp"
-        android:background="@drawable/shadow_shape"
+        android:background="@drawable/list_pressed"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:textColor="#ff0000"
-            android:text="@{viewmodel.aqi}"
+            android:text="@{viewmodel.airIndexToLV()}"
             android:hint="90"
-            android:textSize="50sp"
+            android:textSize="40sp"
             android:layout_weight="9"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <LinearLayout
+            android:minHeight="50dp"
             android:layout_weight="2"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:text="@{viewmodel.city}"
+                android:text="@{viewmodel.nameCityToLV()}"
                 android:hint="Hanoi"
                 android:layout_weight="1"
                 android:textColor="#fff"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
             <TextView
-                android:text="@{viewmodel.time}"
+                android:text="@{viewmodel.dateTimeToLV()}"
                 android:textColor="#fff"
                 android:hint="YYMMDD"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>

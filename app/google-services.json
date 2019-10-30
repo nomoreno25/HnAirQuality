@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "512639622130",
+    "firebase_url": "https://hnairquality.firebaseio.com",
+    "project_id": "hnairquality",
+    "storage_bucket": "hnairquality.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:512639622130:android:c67acc93a6f0ac248e696b",
+        "android_client_info": {
+          "package_name": "com.hailv.hnairquality"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "512639622130-60n58mk34psfqovl6hpl813g2vdd0110.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hailv.hnairquality",
+            "certificate_hash": "339a58b67566215ea5f8731419355cd58eaa927b"
+          }
+        },
+        {
+          "client_id": "512639622130-sqb59vm71844832p1sfvkfeac56c248b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZPwks4OEiJYmvA3eyq_tDrHftnzSz2Jo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "512639622130-sqb59vm71844832p1sfvkfeac56c248b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

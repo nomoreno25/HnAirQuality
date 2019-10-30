@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.support.v4.content.ContextCompat"/>
         <variable
             name="viewmodel"
             type="com.hailv.hnairquality.viewmodel.AirQViewModel" />
@@ -16,7 +15,7 @@
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:orientation="vertical"
-        tools:context=".MainActivity">
+        tools:context=".view.ui.MainActivity">
         <LinearLayout
             android:layout_gravity="center"
             android:layout_width="150dp"
@@ -34,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:hint="90"
-                    android:text="@{viewmodel.aqi}"
+                    android:text="@{viewmodel.airIndex()}"
                     android:textColor="#FF0000"
                     android:textSize="50sp"
                     android:textStyle="bold" />
@@ -44,7 +43,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="good"
-                    android:text="@{viewmodel.rate}"
+                    android:text="@{viewmodel.classification()}"
                     android:textColor="#fff" />
             </LinearLayout>
 
@@ -59,7 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@{viewmodel.city}" />
+                    android:text="@{viewmodel.nameCity()}" />
             </LinearLayout>
 
             <LinearLayout
@@ -74,17 +73,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@{viewmodel.time}" />
+                    android:text="@{viewmodel.dateTime()}" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_margin="5dp"
                 android:id="@+id/recyclerView"
+                android:scrollbars="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent"/>
         </LinearLayout>
     </LinearLayout>
 </layout>

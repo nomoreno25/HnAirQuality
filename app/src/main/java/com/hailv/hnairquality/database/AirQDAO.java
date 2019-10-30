@@ -1,29 +1,29 @@
 package com.hailv.hnairquality.database;
 
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.Query;
-import android.arch.persistence.room.Update;
-
 import java.util.List;
 
-import static android.arch.persistence.room.OnConflictStrategy.IGNORE;
-import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
+import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.Query;
+import androidx.room.Update;
+
+import static androidx.room.OnConflictStrategy.IGNORE;
+import static androidx.room.OnConflictStrategy.REPLACE;
 
 @Dao
 public interface AirQDAO {
     @Insert(onConflict = REPLACE)
-    void insertAirQ(AirQ airQ);
+    void insertAirQ(AirQDatabaseModel airQDatabaseModel);
 
     @Insert(onConflict = IGNORE)
-    void insertOrReplaceAirQ(AirQ... airQS);
+    void insertOrReplaceAirQ(AirQDatabaseModel... airQDatabaseModels);
 
     @Update(onConflict = REPLACE)
-    void updateAirQ(AirQ airQ);
+    void updateAirQ(AirQDatabaseModel airQDatabaseModel);
 
-    @Query("DELETE FROM AirQ")
+    @Query("DELETE FROM AirQDatabaseModel")
     void deleteAll();
 
-    @Query("SELECT * FROM AirQ")
-    public List<AirQ> findAllAirQSync();
+    @Query("SELECT * FROM AirQDatabaseModel")
+    public List<AirQDatabaseModel> findAllAirQSync();
 }

@@ -1,4 +1,4 @@
-package com.hailv.hnairquality.network.networkmodel;
+package com.hailv.hnairquality.server.networkmodel;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

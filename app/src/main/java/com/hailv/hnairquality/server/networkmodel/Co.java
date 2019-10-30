@@ -1,19 +1,19 @@
-package com.hailv.hnairquality.network.networkmodel;
+package com.hailv.hnairquality.server.networkmodel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Pm25 {
+public class Co {
 
     @SerializedName("v")
     @Expose
-    private Integer v;
+    private Double v;
 
-    public Integer getV() {
+    public Double getV() {
         return v;
     }
 
-    public void setV(Integer v) {
+    public void setV(Double v) {
         this.v = v;
     }
 

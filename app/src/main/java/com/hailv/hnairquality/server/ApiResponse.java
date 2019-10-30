@@ -1,9 +1,7 @@
-package com.hailv.hnairquality.network;
+package com.hailv.hnairquality.server;
 
 import com.google.gson.annotations.SerializedName;
-import com.hailv.hnairquality.network.networkmodel.Data;
-
-import java.util.List;
+import com.hailv.hnairquality.server.networkmodel.Data;
 
 public class ApiResponse {
     @SerializedName("status")
